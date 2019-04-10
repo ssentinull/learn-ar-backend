@@ -13,32 +13,19 @@
   <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.6.2/aframe/build/aframe-ar.js"></script>
 
 </head>
-<body style="font-family:Arial, Helvetica, sans-serif; background-color: #f5f5f5; margin : 0px; overflow: hidden; height: 200px !important">
+<body style="font-family:Arial, Helvetica, sans-serif; background-color: #f5f5f5; margin: 0px;">
 
-  <div style="width: 100vw; margin: auto; height: 54px; background: #622800; display: flex; align-items: center; justify-content: space-between">
-    <span style="text-align: center; margin: 0px; padding: 8px; padding-left: 16px; font-size: 18px; color: #fff">
-      App
-    </span>
-    <div style="display: flex; align-items: center; padding-right: 16px;">
-      <img style="width: 24px; height: 24px; margin-right: 8px;" src="icons/baseline-star-24px.png" alt="star">
-      <span style="font-size: 18px; color: #fff">0 point</span>
-    </div>
-  </div>
-
-  <a-scene style="display: unset;" embedded arjs='sourceType: webcam; debugUIEnabled: false'>
+  <a-scene embedded arjs='sourceType: webcam; debugUIEnabled: false'>
     <a-entity camera></a-entity>
 
-    <a-marker preset='hiro'>
-      <a-entity 
-        obj-model="obj: url(model/model.obj);
-        mtl: url(model/materials.mtl)">
-      </a-entity>
-    </a-marker>
+        <a-marker preset='hiro'>
+          <a-entity 
+            obj-model="obj: url(model/model.obj);
+            mtl: url(model/materials.mtl)">
+          </a-entity>
+        </a-marker>
 
   </a-scene>
 
-  <div style="width: 100vw; margin: auto; height: 54px; background: #622800; display: flex; align-items: center; justify-content: space-between; position: fixed; bottom: 0; right: 0;">
-  </div>
-  
 </body>
 </html>
