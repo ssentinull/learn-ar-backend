@@ -11,6 +11,11 @@
   <script src="/js/aframe.min.js"></script> -->
 
   <style>
+    body {
+      max-width: 500px;
+      margin: auto;
+    }
+
     .top-bar {
       width: 100%;
       height: 54px;
@@ -30,6 +35,8 @@
       right: 0;
       left: 0;
       width: 100%;
+      max-width: 500px;
+      margin: auto;
       height: 54px;
       box-sizing: border-box;
       background: brown;
@@ -55,7 +62,7 @@
       display: flex;
       margin: 16px;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center; 
     }
 
@@ -78,12 +85,12 @@
   </style>
 </head>
 
-<body style="font-family:Arial, Helvetica, sans-serif; background-color: #f5f5f5; margin: 0px;">
+<body style="font-family:Arial, Helvetica, sans-serif; background-color: #f5f5f5;">
   <div class="top-bar">
     <span>App</span>
     <div style="display: flex; align-items: center;">
       <img src="icons/baseline-star-24px.png" alt="" srcset="">
-      <span style="margin-left: 8px;">0 Point</span>
+      <span style="margin-left: 8px;">100 Point</span>
     </div>
   </div>
 
