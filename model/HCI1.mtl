@@ -1,0 +1,13 @@
+# Blender MTL File: 'HCI1.blend'
+# Material Count: 1
+
+newmtl body
+Ns 19.607843
+Ka 1.000000 1.000000 1.000000
+Kd 0.000000 0.000000 0.000000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Kd man12/casual02_m_26.jpg
