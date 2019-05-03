@@ -1,0 +1,27 @@
+{
+  "name": "learn-ar",
+  "version": "1.0.0",
+  "description": "Web-based Augmented Reality application",
+  "main": "main.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.16.4",
+    "mongoose": "^5.5.5",
+    "nodemon": "^1.19.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node main.js",
+    "dev": "nodemon main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miun173/learn-ar.git"
+  },
+  "author": "M. Fahmi Irfananda, Ibnu Ahsani, Malik Zulfikar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/miun173/learn-ar/issues"
+  },
+  "homepage": "https://github.com/miun173/learn-ar#readme"
+}
