@@ -23,7 +23,7 @@ const createUser = (req, res) => {
   }
 }
 
-const read = (req, res) => {
+const readUser = (req, res) => {
   try{
     const id = req.params.id;
 
@@ -47,6 +47,6 @@ const test = (req, res) => {
 
 module.exports = {
   createUser,
-  read,
+  readUser,
   test,
 }
