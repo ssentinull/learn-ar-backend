@@ -6,8 +6,8 @@ const userSchema = new Schema({
   email: String,
   password: String,
   treasures: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Treasure'
+    type: Array,
+    "default": []
   }]
 });
 

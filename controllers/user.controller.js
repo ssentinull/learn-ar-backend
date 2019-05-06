@@ -1,16 +1,11 @@
 const UserModel = require('../models/user.model');
 
-const test = (req, res) => {
-  res.send('Testing user controller!');
-};
-
-const create = (req, res) => {
+const createUser = (req, res) => {
   try{
     const newUser = new UserModel({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      treasure: []
     });
 
     newUser.save((err, user) => {
@@ -46,8 +41,12 @@ const read = (req, res) => {
   }
 }
 
+const test = (req, res) => {
+  res.send('Testing user controller!');
+};
+
 module.exports = {
+  createUser,
+  read,
   test,
-  create,
-  read
 }
