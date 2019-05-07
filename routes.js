@@ -1,8 +1,11 @@
 const express = require('express');
 const authController = require('./controllers/auth.controller');
+const authMiddleware = require('./middlewares/auth.middleware');
 const initController = require('./controllers/init.controller');
 const treasureController = require('./controllers/treasures.controller');
 const userController = require('./controllers/user.controller');
+
+const { checkUserToken } = authMiddleware;
 
 const router = express.Router();
 
@@ -19,12 +22,12 @@ router.post('/login', authController.login);
 router.post('/user', userController.createUser);
 
 // Endpoint to get user data based on user id
-router.get('/user/:id', userController.readUser);
+router.get('/user/:id', checkUserToken, userController.readUser);
 
 // Endpoint to push a new treasure based on treasure id to a user based on user id
-router.post('/user/:userId/treasure/:treasureId', treasureController.pushTreasure);
+router.post('/user/:userId/treasure/:treasureId', checkUserToken, treasureController.pushTreasure);
 
 // Endpoint to get all treasures available
-router.get('/treasures', treasureController.readTreasures);
+router.get('/treasures', checkUserToken, treasureController.readTreasures);
 
 module.exports = router;
