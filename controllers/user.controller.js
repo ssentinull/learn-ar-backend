@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const UserModel = require('../models/user.model');
 
 const createUser = (req, res) => {
@@ -6,6 +7,7 @@ const createUser = (req, res) => {
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      token: crypto.randomBytes(8).toString('hex'),
     });
 
     newUser.save((err, user) => {
