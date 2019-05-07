@@ -16,6 +16,8 @@ const createUser = (req, res) => {
         return res.status(400).json({error: err.message});
       }
 
+      res.headers.authorization = newUser.token;
+
       return res.status(200).json(newUser);
     });
   } catch (err) {
@@ -27,7 +29,7 @@ const createUser = (req, res) => {
 
 const readUser = (req, res) => {
   try{
-    const id = req.params.id;
+    const { id } = req.params;
 
     UserModel.findById(id, (err, user) => {
       if(err){
