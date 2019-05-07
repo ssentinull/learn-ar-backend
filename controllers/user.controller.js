@@ -16,9 +16,7 @@ const createUser = (req, res) => {
         return res.status(400).json({error: err.message});
       }
 
-      res.headers.authorization = newUser.token;
-
-      return res.status(200).json(newUser);
+      return res.status(200).header('Authorization', newUser.token).json(newUser);
     });
   } catch (err) {
     
