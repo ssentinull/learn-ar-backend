@@ -27,10 +27,7 @@ const pushTreasure = async (req, res) => {
 
 const readTreasures = (req, res) => {
   try{
-    TreasureModel.find().then((treasures) => {
-      res.status(200).json(treasures);
-    });
-
+    TreasureModel.find().then(treasures => res.status(200).json(treasures));
   } catch(err){
     console.log('Error: ' + err);
     return res.status(400).json({error: err.message});
