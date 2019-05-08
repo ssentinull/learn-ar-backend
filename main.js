@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
 
-app.use(routes);
+app.use('/api', routes);
 
 app.listen(config.PORT, () => {
   console.log(`starting ${config.ENV} server at http://localhost:${config.PORT}`);
