@@ -1,6 +1,6 @@
 const UserModel = require('../models/user.model');
 
-const checkUserToken = (req, res, next) => {
+const user = (req, res, next) => {
   const token = req.get('Authorization');
 
   if(!token){
@@ -24,4 +24,4 @@ const checkUserToken = (req, res, next) => {
   });
 }
 
-module.exports = { checkUserToken }
+module.exports = { user }
