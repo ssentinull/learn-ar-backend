@@ -2,12 +2,15 @@ const crypto = require('crypto');
 const UserModel = require('../models/user.model');
 
 const createUser = (req, res) => {
+  const md5 = crypto.createHash('md5');
+  md5.update((new Date()).getTime() + '');
+
   try{
     const newUser = new UserModel({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      token: crypto.randomBytes(8).toString('hex'),
+      token: md5.digest('hex'),
     });
 
     newUser.save((err, user) => {
