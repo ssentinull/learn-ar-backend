@@ -4,20 +4,17 @@ const user = (req, res, next) => {
   const token = req.get('Authorization');
 
   if(!token){
-    const err = new Error('The token is not set!');
-    err.status = 400;
-    return next(err);
+    return res.status(400).json({error: 'The token is not set!'});
   }
 
   UserModel.find({token: token}, (err, user) => {
     if(err){
-      return next(err);
+      console.error(err)
+      return res.status(400).json({error: 'System error'});
     }
 
     if(!user.length){
-      const err = new Error('The token doesn\'t exist in our DB!');
-      err.status = 400;
-      return next(err);
+      return res.status(400).json({error: 'The token doesn\'t exist in our DB!'});
     }    
     
     return next();
