@@ -1,16 +1,20 @@
 const crypto = require('crypto');
+const TreasureModel = require('../models/treasure.model');
 const TokenModel = require('../models/token.model');
 const UserModel = require('../models/user.model');
 
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
   const sha1 = crypto.createHash('sha1')
     .update(req.app.locals.currentDate + req.app.locals.randomNumber);
   
   try{
+    const allTreasures = await TreasureModel.find().exec();
+
     const newUser = new UserModel({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
+      treasures: allTreasures
     });
 
     newUser.save((err, user) => {
