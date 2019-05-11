@@ -1,4 +1,4 @@
-const UserModel = require('../models/user.model');
+const TokenModel = require('../models/token.model');
 
 const user = (req, res, next) => {
   const token = req.get('Authorization');
@@ -7,13 +7,13 @@ const user = (req, res, next) => {
     return res.status(400).json({error: 'The token is not set!'});
   }
 
-  UserModel.find({token: token}, (err, user) => {
+  TokenModel.find({value: token}, (err, token) => {
     if(err){
       console.error(err)
       return res.status(400).json({error: 'System error'});
     }
 
-    if(!user.length){
+    if(!token.length){
       return res.status(400).json({error: 'The token doesn\'t exist in our DB!'});
     }    
     
