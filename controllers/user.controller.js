@@ -3,9 +3,8 @@ const TokenModel = require('../models/token.model');
 const UserModel = require('../models/user.model');
 
 const createUser = (req, res) => {
-  const randomNumber = Math.random().toString();
-  const currentDate = (new Date()).valueOf().toString();
-  const sha1 = crypto.createHash('sha1').update(currentDate + randomNumber);
+  const sha1 = crypto.createHash('sha1')
+    .update(req.app.locals.currentDate + req.app.locals.randomNumber);
   
   try{
     const newUser = new UserModel({

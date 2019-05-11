@@ -19,9 +19,9 @@ const login = (req, res) => {
       return res.status(400).json({ error: "password not match" });
     }
     
-    const randomNumber = Math.random().toString();
-    const currentDate = (new Date()).valueOf().toString();
-    const tokenValue = crypto.createHash('sha1').update(currentDate + randomNumber).digest('hex');
+    const tokenValue = crypto.createHash('sha1')
+      .update(req.app.locals.currentDate + req.app.locals.randomNumber)
+      .digest('hex');
     
     const newToken = new TokenModel({
       value: tokenValue
