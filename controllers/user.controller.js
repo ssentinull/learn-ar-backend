@@ -4,8 +4,10 @@ const TokenModel = require('../models/token.model');
 const UserModel = require('../models/user.model');
 
 const createUser = async (req, res) => {
+  const randomNumber = Math.random().toString();
+  const currentDate = (new Date().getTime()).toString();
   const sha1 = crypto.createHash('sha1')
-    .update(req.app.locals.currentDate + req.app.locals.randomNumber);
+    .update(currentDate + randomNumber);
   
   try{
     const allTreasures = await TreasureModel.find().exec();

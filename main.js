@@ -15,9 +15,6 @@ mongoose.connection.on('error', console.error.bind(console, 'connection error:')
 
 const app = express();
 
-app.locals.randomNumber = Math.random().toString();
-app.locals.currentDate = (new Date()).valueOf().toString();
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
