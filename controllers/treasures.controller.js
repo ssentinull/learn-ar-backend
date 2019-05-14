@@ -13,7 +13,14 @@ const pushTreasure = async (req, res) => {
         return res.status(400).json({error: err.message});
       }
 
-      user.treasures.push(treasure);
+      // is treasure already pushed ?
+      const isExist = user.treasures.every(t => t._id !== treasureId)
+      if (isExist) {
+        return res.status(400).json({ message: "treasure already added" });
+      }
+
+      treasure.isUnlocked = true
+      user.treasures.push(treasure)
       user.save();
 
       return res.status(200).json(user);
