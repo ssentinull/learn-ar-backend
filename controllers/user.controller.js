@@ -45,18 +45,35 @@ const readUser = (req, res) => {
   try{
     const { id } = req.params;
 
-    UserModel.findById(id, (err, user) => {
-      if(err){
-        console.log('Error: ' + err);
-        return res.status(400).json({error: err.message});
+    // get all treasure
+    TreasureModel.find((trsErr, trs) => {
+      if (trsErr) {
+        console.error(trsErr);
+        return res.status(500).json({ error: 'system error' });
       }
 
-      return res.status(200).json(user);
-    });
+      UserModel.findById(id, (err, user) => {
+        if(err) {
+          console.error(err)
+          return res.status(500).json({ error: 'system error' });
+        }
 
+        for (let i = 0; i < trs.length; i++) {
+          for (let j = 0; j < user.treasures.length; j++) {
+            if (user.treasures[j]._id +'' === trs[i]._id +'') {
+              trs[i].isUnlocked = true
+            }
+          }
+        }
+
+        user.treasures = trs
+        return res.status(200).json(user)
+
+      });    
+    })
   } catch (err) {
     console.log('Error: ' + err);
-    return res.status(400).json({error: err.message});
+    return res.status(500).json({ error: 'system error' })
   }
 }
 
