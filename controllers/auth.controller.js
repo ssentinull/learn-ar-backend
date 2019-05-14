@@ -31,11 +31,11 @@ const login = (req, res) => {
 
     newToken.save((err, token) => {
       if(err){
-        console.log('Error: ' + err);
+        console.log(err);
         return res.status(400).json({error: err.message});
       }
 
-      return res.status(200).header('Authorization', token.value).json(user);
+      return res.status(200).header('Authorization', token.value).json({ user, token: token.value });
     });
   });
 };
