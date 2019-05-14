@@ -64,8 +64,10 @@ const readUser = (req, res) => {
           }
         }
 
-        user.treasures = trs
-        return res.status(200).json(user)
+        const userData = user
+        userData.treasures = [...trs]
+
+        return res.status(200).json(userData)
 
       });    
     })
