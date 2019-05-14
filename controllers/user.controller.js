@@ -10,13 +10,11 @@ const createUser = async (req, res) => {
     .update(currentDate + randomNumber);
   
   try{
-    const allTreasures = await TreasureModel.find().exec();
-
     const newUser = new UserModel({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
-      treasures: allTreasures
+      treasures: []
     });
 
     newUser.save((err, user) => {
