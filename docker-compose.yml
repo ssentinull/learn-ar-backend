@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  mongodb:
+    container_name: hci-mongodb
+    image: mvertes/alpine-mongo
+    volumes:
+      - hci-mongo:/data/db
+    ports:
+      - '27017:27017'
+
+  hci-backend:
+    container_name: hci-backend
+    depends_on:
+      - mongodb
+    image: learn-ar-backend:latest
+    env_file: .env
+    ports:
+      - '8080:8080'
+    volumes:
+      - '../learn-ar-backend:/app'
+
+volumes:
+  hci-mongo:
+    name: hci-mongo
