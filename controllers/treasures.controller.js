@@ -14,7 +14,7 @@ const pushTreasure = async (req, res) => {
       }
 
       // is treasure already pushed ?
-      const isExist = user.treasures.every(t => t._id !== treasureId)
+      const isExist = user.treasures.length > 0 && user.treasures.every(t => t._id !== treasureId)
       if (isExist) {
         return res.status(400).json({ message: "treasure already added" });
       }
