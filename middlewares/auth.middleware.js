@@ -7,13 +7,14 @@ const user = (req, res, next) => {
     return res.status(400).json({error: 'The token is not set!'});
   }
 
-  TokenModel.find({value: token}, (err, token) => {
+  TokenModel.findOne({ value: token }, (err, token) => {
     if(err){
       console.error(err)
       return res.status(400).json({error: 'System error'});
     }
 
-    if(!token.length){
+    if(!token){
+      console.log(token)
       return res.status(400).json({error: 'The token doesn\'t exist in our DB!'});
     }    
     
