@@ -39,11 +39,13 @@ const createUser = async (req, res) => {
   }
 }
 
+// return user data with all (locked & unlocked) treasures
+// an unlocked treasure is a treasure that already added to user
 const readUser = (req, res) => {
   try{
     const { id } = req.params;
 
-    // get all treasure
+    // merge user treasure with all treasures
     TreasureModel.find((trsErr, trs) => {
       if (trsErr) {
         console.error(trsErr);
@@ -56,6 +58,7 @@ const readUser = (req, res) => {
           return res.status(500).json({ error: 'system error' });
         }
 
+        // made isUnlocked true if treasure already added to user
         for (let i = 0; i < trs.length; i++) {
           for (let j = 0; j < user.treasures.length; j++) {
             if (user.treasures[j]._id +'' === trs[i]._id +'') {
