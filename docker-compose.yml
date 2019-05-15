@@ -13,12 +13,13 @@ services:
     container_name: hci-backend
     depends_on:
       - mongodb
-    image: learn-ar-backend:latest
+    # image: learn-ar-backend:latest
+    build: .
     env_file: .env
     ports:
       - '8080:8080'
     volumes:
-      - '../learn-ar-backend:/app'
+      - '.:/app'
 
 volumes:
   hci-mongo:
