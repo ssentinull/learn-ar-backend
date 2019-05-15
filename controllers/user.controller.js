@@ -61,6 +61,7 @@ const readUser = (req, res) => {
         // made isUnlocked true if treasure already added to user
         for (let i = 0; i < trs.length; i++) {
           for (let j = 0; j < user.treasures.length; j++) {
+            // id can only be compare in string format
             if (user.treasures[j]._id +'' === trs[i]._id +'') {
               trs[i].isUnlocked = true
             }
