@@ -23,7 +23,7 @@ router.post('/user', userController.createUser);
 router.get('/user/:id', authMiddleware.user, userController.readUser);
 
 // Endpoint to push a new treasure based on treasure id to a user based on user id
-router.post('/user/:userId/treasure/:treasureId', authMiddleware.user, treasureController.pushTreasure);
+router.post('/user/:userId/treasure/:treasureName', authMiddleware.user, treasureController.pushTreasure);
 
 // Endpoint to get all treasures available
 router.get('/treasures', authMiddleware.user, treasureController.readTreasures);
