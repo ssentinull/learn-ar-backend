@@ -2,7 +2,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const express = require('express');
 const mongoose = require('mongoose');
-const routes = require('./routes'); 
+const morgan = require('morgan');
+const routes = require('./routes');
+const winston = require('./config/winston');
 
 const config = {
   PORT: process.env.APP_PORT || '9000',
@@ -18,6 +20,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+app.use(morgan('combined', {stream: winston.stream}));
 
 app.use('/api', routes);
 
