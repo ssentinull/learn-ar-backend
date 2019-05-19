@@ -3,13 +3,22 @@ const TreasureModel = require('../models/treasure.model');
 const TokenModel = require('../models/token.model');
 const UserModel = require('../models/user.model');
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
   const randomNumber = Math.random().toString();
   const currentDate = (new Date().getTime()).toString();
   const sha1 = crypto.createHash('sha1')
     .update(currentDate + randomNumber);
   
   try{
+    const { name, email, password } = req.body;
+    
+    if(!(name && email && password)){
+      const err = new Error('some of the inputs are not filled');
+      err.status = 400;
+      
+      next(err);
+    }
+
     const newUser = new UserModel({
       name: req.body.name,
       email: req.body.email,
@@ -19,8 +28,8 @@ const createUser = async (req, res) => {
 
     newUser.save((err, user) => {
       if(err){
-        console.log('Error: ' + err);
-        return res.status(400).json({error: err.message});
+        err.status = 400;      
+        next(err);
       }
 
       const newToken = new TokenModel({
@@ -33,29 +42,35 @@ const createUser = async (req, res) => {
     });
 
   } catch (err) {
-    
-    console.log('Error: ' + err);
-    return res.status(400).json({error: err.message}); 
+    err.status = 400;      
+    next(err);
   }
 }
 
 // return user data with all (locked & unlocked) treasures
 // an unlocked treasure is a treasure that already added to user
-const readUser = (req, res) => {
+const readUser = (req, res, next) => {
   try{
     const { id } = req.params;
+
+    if(!id){
+      const err = new Error('the user id is not set');
+      err.status = 400;
+      
+      next(err);
+    }
 
     // merge user treasure with all treasures
     TreasureModel.find((trsErr, trs) => {
       if (trsErr) {
-        console.error(trsErr);
-        return res.status(500).json({ error: 'system error' });
+        trsErr.status = 500;
+        next(trsErr);
       }
 
       UserModel.findById(id, (err, user) => {
         if(err) {
-          console.error(err)
-          return res.status(500).json({ error: 'system error' });
+          err.status = 500;
+          next(err);
         }
 
         // made isUnlocked true if treasure already added to user
@@ -76,8 +91,8 @@ const readUser = (req, res) => {
       });    
     })
   } catch (err) {
-    console.log('Error: ' + err);
-    return res.status(500).json({ error: 'system error' })
+    err.status = 500;
+    next(err);
   }
 }
 

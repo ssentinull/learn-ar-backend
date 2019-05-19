@@ -33,10 +33,8 @@ app.use((err, req, res, next) => {
   winston.error(`${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
 
   // render the error page
-  res.status(err.status || 500);
-  res.json({
-    message: err.message,
-  });
+  res.status(err.status || 500)
+    .json({error: err.message,});
 });
 
 app.listen(config.PORT, () => {
