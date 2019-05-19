@@ -30,10 +30,10 @@ app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // add this line to include winston logging
-  winston.error(`${err.status || 404} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
+  winston.error(`${err.status || 500} - ${err.message} - ${req.originalUrl} - ${req.method} - ${req.ip}`);
 
   // render the error page
-  res.status(err.status || 404);
+  res.status(err.status || 500);
   res.json({
     message: err.message,
   });
