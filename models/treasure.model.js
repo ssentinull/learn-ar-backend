@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const treasureSchema = new Schema({
   name: String,
+  longName: String,
   description: String,
   url: String,
   logo: String,
