@@ -5,7 +5,8 @@ exports.init = (req, res) => {
   const utmu = new Treasure({
     name: 'UTMU',
     description: 'Unit Tenis Meja Unpad',
-    url: 'https://id-id.facebook.com/pages/Unit-Tenis-Meja-Unpad/'
+    url: 'https://id-id.facebook.com/pages/Unit-Tenis-Meja-Unpad/',
+    logo: 'utmu-logo.jpg'
   });
 
   utmu.save((err) => {
@@ -20,7 +21,7 @@ exports.init = (req, res) => {
   const usbu = new Treasure({
     name: 'USBU',
     description: 'Unit Sepak Bola Unpad',
-    url: 'https://www.facebook.com/pages/Unit-Sepakbola-UNPAD/170110036340931'
+    url: 'https://www.facebook.com/pages/Unit-Sepakbola-UNPAD/170110036340931',
   });
 
   usbu.save((err) => {
@@ -37,6 +38,7 @@ exports.init = (req, res) => {
     description: `Unit Taekwondo Unpad
     Unit Taekwondo Unpad (UTKD) didirikan pada tanggal 16 September 1982. UTKD mengadakan latihan rutin setiap hari Senin & Kamis di Pelataran Taman Fakultas Hukum Unpad (Dipati Ukur Bandung) dan Selasa & Jumat di Bale Santika atau di Stadion Jati Padjadjaran (Jatinangor) mulai pukul 16.00 WIB.`,
     url: `https://www.facebook.com/UnitTaekwondoUnpad/`,
+    logo: 'taekwondo-logo.jpg'
   });
 
   utkd.save(err => {
@@ -54,6 +56,7 @@ exports.init = (req, res) => {
     Paduan Suara Mahasiswa Universitas Padjadjaran (PSM Unpad) merupakan sebuah organisasi kemahasiswaan yang terbentuk pada tahun 1978. PSM Unpad beranggotakan 137 mahasiswa aktif dari berbagai disiplin ilmu. PSM Unpad berkembang sebagai salah satu unit kegiatan mahasiswa yang berperan penting dalam kegiatan-kegiatan protokoler dan seremonial di lingkungan Universitas Padjadjaran. Selain itu, PSM Unpad juga dikenal sebagai unit kegiatan mahasiswa terbesar di Universitas Padjadjaran dengan manajemen kemahasiswaan yang kuat. Dengan kata lain, unit kegiatan mahasiswa ini dapat menjadi sarana bagi para anggotanya untuk mengembangkan kemampuan bernyanyi maupun berorganisasi.
     Dalam eksistensinya di dunia paduan suara, PSM Unpad telah berhasil menjuarai berbagai kompetisi, baik nasional maupun internasional. Tidak hanya itu, PSM Unpad juga turut dipercaya untuk tampil dalam beragam acara seremonial dan hiburan besar yang bekerjasama dengan berbagai instansi dan juga musisi, baik nasional maupun internasional, karena reputasi yang dimilikinya. Namun demikian, PSM Unpad pun hingga kini terus meningkatkan prestasinya sebagai salah satu paduan suara terbaik di Indonesia.`,
     url: `https://www.facebook.com/unpadchoir/`,
+    logo: 'psm-logo.jpeg'
   });
 
   psm.save(err => {
@@ -76,6 +79,7 @@ exports.init = (req, res) => {
     Mengikuti kejuaraan tingkat nasional dan internasional.
     Mengdakan sosialisasi permainan kartu.`,
     url: ``,
+    logo: 'bridge-logo.png'
   });
 
   bridge.save(err => {
