@@ -17,8 +17,10 @@ mongoose.connection.on('error', console.error.bind(console, 'connection error:')
 
 const app = express();
 
+app.use(express.static('static'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+
 app.use(cors());
 app.use(morgan('combined', {stream: winston.stream}));
 
