@@ -4,7 +4,9 @@ exports.init = (req, res) => {
 
   const utmu = new Treasure({
     name: 'UTMU',
-    description: 'Unit Tenis Meja Unpad',
+    description: `Unit Tenis Meja Unpad
+    Sarana pengembangan bakat dan minat Tennis Meja. Salah satu unit kegiatan mahasiswa yang kompeten dalam bidang olahraga tenis meja. 
+    `,
     url: 'https://id-id.facebook.com/pages/Unit-Tenis-Meja-Unpad/',
     logo: 'utmu-logo.jpg'
   });
@@ -20,7 +22,9 @@ exports.init = (req, res) => {
 
   const usbu = new Treasure({
     name: 'USBU',
-    description: 'Unit Sepak Bola Unpad',
+    description: `Unit Sepak Bola Unpad
+    Di USBU ada tiga departemen, yakni departemen futsal putra, futsal putri, dan departeman sepakbola.
+    Prestasi USBU juga sudah mencapai kancah internasional. Jadwal latihannya pun sudah rutin. Biasanya di Stadion Jati Padjadjaran dan Bale Santika pada pukul 3 sore atau 9 pagi sesuai divisi masing-masing. Salah satu acara yang paling seru adalah saat Student Day alias saat penerimaan anggota baru. Demi menarik perhatian mahasiswa baru, USBU sering bikin demo tentang sepak bola dengan menampilkan trik-trik terbaiknya.`,
     url: 'https://www.facebook.com/pages/Unit-Sepakbola-UNPAD/170110036340931',
   });
 
