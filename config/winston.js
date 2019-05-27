@@ -1,10 +1,14 @@
 const winston = require('winston');
 
+const { format } = winston;
+
 const options = {
-  level: 'info',
+  level: 'debug',
   handleExceptions: true,
-  json: true,
-  colorize: true,
+  format: format.combine(
+    format.colorize(),
+    format.simple(),
+  ),
 };
 
 const logger = new winston.createLogger({
