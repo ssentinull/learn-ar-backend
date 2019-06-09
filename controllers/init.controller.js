@@ -2,6 +2,23 @@ const Treasure = require('../models/treasure.model');
 
 exports.init = (req, res) => {
 
+  const ubbu = new Treasure({
+    name: 'UBBU',
+    longName: 'Unit Bola Basket Unpad',
+    description: `Sarana pengembangan bakat dan minat Tennis Meja. Salah satu unit kegiatan mahasiswa yang kompeten dalam bidang olahraga tenis meja.`,
+    url: 'https://www.facebook.com/pages/Unit-Bola-Basket-Unpad-UBBU/',
+    logo: 'ubbu-logo.png'
+  });
+
+  ubbu.save((err) => {
+
+    if(err){
+      return console.error(err.stack);
+    }
+    
+    console.log('UBBU successfully added');
+  });
+  
   const utmu = new Treasure({
     name: 'UTMU',
     longName: 'Unit Tenis Meja Unpad',
